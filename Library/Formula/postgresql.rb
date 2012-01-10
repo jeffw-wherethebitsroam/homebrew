@@ -101,7 +101,8 @@ See:
 # Create/Upgrade a Database
 
 If this is your first install, create a database with:
-  initdb #{var}/postgres
+  mkdir -p #{var}/postgres/data
+  initdb #{var}/postgres/data
 
 To migrate existing data from a previous major version (pre-9.1) of PostgreSQL, see:
   http://www.postgresql.org/docs/9.1/static/upgrading.html
@@ -119,10 +120,10 @@ If this is an upgrade and you already have the org.postgresql.postgres.plist loa
   launchctl load -w ~/Library/LaunchAgents/org.postgresql.postgres.plist
 
 Or start manually with:
-  pg_ctl -D #{var}/postgres -l #{var}/postgres/server.log start
+  pg_ctl -D #{var}/postgres/data -l #{var}/postgres/server.log start
 
 And stop with:
-  pg_ctl -D #{var}/postgres stop -s -m fast
+  pg_ctl -D #{var}/postgres/data stop -s -m fast
 
 # Other
 
